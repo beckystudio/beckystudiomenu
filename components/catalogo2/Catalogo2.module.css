@@ -1,0 +1,163 @@
+/*
+ * /catalogo2/ — índice del catálogo con el diseño de /m2/.
+ * La estructura (foto de fondo, sombreado, logo, panel, tarjetas, botones) se hereda de
+ * components/m2 con `composes`; aquí sólo va lo propio del catálogo.
+ */
+
+.page {
+  composes: page from "../m2/Landing.module.css";
+}
+.background {
+  composes: background from "../m2/Landing.module.css";
+}
+.backgroundImage {
+  composes: backgroundImage from "../m2/Landing.module.css";
+}
+.shadeTop {
+  composes: shadeTop from "../m2/Landing.module.css";
+}
+.shadeBottom {
+  composes: shadeBottom from "../m2/Landing.module.css";
+}
+.layout {
+  composes: layout from "../m2/Landing.module.css";
+}
+.brand {
+  composes: brand from "../m2/Landing.module.css";
+}
+.logo {
+  composes: logo from "../m2/Landing.module.css";
+}
+.panel {
+  composes: panel from "../m2/Landing.module.css";
+}
+
+/* La foto de hojas es clara: un poco más de sombra para que el panel y el logo se lean igual que en /m2/. */
+.backgroundImage {
+  object-position: center center;
+  filter: brightness(0.62);
+}
+
+/* ---------- Título (como "¡Bienvenida!" del diálogo de /m2/, en claro) ---------- */
+.title {
+  margin: 0;
+  font-family: var(--becky-font-display);
+  font-size: 24px;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.2px;
+  text-align: center;
+}
+.title::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 1px;
+  margin: 14px auto 0;
+  background: var(--becky-gold-light);
+}
+
+/* ---------- Categorías: botones píldora como "Conócenos más →" ---------- */
+.categories {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+.category {
+  composes: trigger from "../m2/AboutDialog.module.css";
+  width: 100%;
+  box-sizing: border-box;
+  justify-content: space-between;
+  padding: 0 14px 0 16px;
+  letter-spacing: 0.9px;
+  text-decoration: none;
+}
+.category:hover,
+.category:focus-visible {
+  border-color: var(--becky-gold-light);
+  background: rgba(148, 108, 29, 0.35);
+}
+.arrow {
+  composes: arrow from "../m2/AboutDialog.module.css";
+}
+.category:hover .arrow,
+.category:focus-visible .arrow {
+  transform: translateX(3px);
+}
+
+/* ---------- Novias y XV Años: tarjetas de imagen como los accesos de /m2/ ---------- */
+.packages {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+.card {
+  composes: card from "../m2/Landing.module.css";
+  aspect-ratio: 4 / 5;
+}
+.cardImage {
+  composes: cardImage from "../m2/Landing.module.css";
+}
+.cardLabel {
+  composes: cardLabel from "../m2/Landing.module.css";
+  padding: 9px 4px;
+  font-family: var(--becky-font-display);
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* ---------- Pie del panel ---------- */
+.footer {
+  composes: footer from "../m2/Landing.module.css";
+  justify-content: center;
+}
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  color: var(--becky-white);
+  font-family: var(--becky-font-label);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  opacity: 0.92;
+  transition: color 0.2s ease;
+}
+.back:hover,
+.back:focus-visible {
+  color: var(--becky-gold-light);
+  opacity: 1;
+}
+.backArrow {
+  font-family: var(--becky-font-body);
+  transition: transform 0.2s ease;
+}
+.back:hover .backArrow {
+  transform: translateX(-3px);
+}
+
+@media (max-width: 767.98px) {
+  /* En celular el panel ocupa todo el ancho (menos 8 px por lado), como en /m2/. */
+  .panel {
+    align-self: stretch;
+  }
+  .title {
+    font-size: 22px;
+  }
+  .category {
+    padding: 0 12px 0 14px;
+    font-size: 11px;
+    letter-spacing: 0.7px;
+  }
+}

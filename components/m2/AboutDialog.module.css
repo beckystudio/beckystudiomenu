@@ -1,0 +1,282 @@
+/* Botón "Conócenos más →" y diálogo de presentación de /m2/. */
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: var(--becky-radius-pill);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--becky-white);
+  font-family: var(--becky-font-label);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.trigger:hover,
+.trigger:focus-visible {
+  background: rgba(255, 255, 255, 0.16);
+}
+.arrow {
+  font-family: var(--becky-font-body);
+  letter-spacing: 0;
+  transition: transform 0.2s ease;
+}
+.trigger:hover .arrow {
+  transform: translateX(3px);
+}
+
+/* ---------- Diálogo ---------- */
+.dialog {
+  width: min(92vw, 32rem);
+  max-width: none;
+  max-height: calc(100svh - 38px);
+  margin: auto;
+  padding: 0;
+  overflow-y: auto;
+  border: 0;
+  border-radius: var(--becky-radius-dialog);
+  background: var(--becky-paper);
+  color: var(--becky-ink);
+  font-family: var(--becky-font-body);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+  overscroll-behavior: contain;
+}
+.dialog::backdrop {
+  background: rgba(0, 0, 0, 0.62);
+  backdrop-filter: blur(4px);
+}
+.dialog[open] {
+  animation: rise 0.35s ease;
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+/* Dos fotos en pareja, con desvanecido hacia el contenido. */
+.photos {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  height: clamp(240px, 68vw, 349px);
+}
+.photos::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 40%;
+  background: linear-gradient(to bottom, rgba(251, 251, 251, 0), var(--becky-paper));
+  pointer-events: none;
+}
+.photo {
+  position: relative;
+  overflow: hidden;
+}
+.photoImage {
+  object-fit: cover;
+}
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(16, 16, 16, 0.45);
+  color: var(--becky-white);
+  cursor: pointer;
+}
+.closeIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.body {
+  padding: 8px 28px 28px;
+}
+
+/* Títulos con línea a la derecha ("Hola, me presento ———" en la referencia). */
+.title,
+.appointment {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0;
+  font-family: var(--becky-font-display);
+  font-weight: 400;
+}
+.title {
+  font-size: 19px;
+  font-style: italic;
+}
+.title::after,
+.appointment::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--becky-gold-light);
+  opacity: 0.7;
+}
+
+/* ---------- Bloques numerados (acordeón) ---------- */
+.blocks {
+  margin-top: 18px;
+}
+.block {
+  border-bottom: 1px solid var(--becky-line);
+}
+.block:last-child {
+  border-bottom: 0;
+}
+.blockOpen {
+  margin-inline: -12px;
+  padding-inline: 12px;
+  border-bottom-color: transparent;
+  border-left: 2px solid var(--becky-gold);
+  border-radius: 0 12px 12px 0;
+  background: var(--becky-white);
+}
+.blockHeading {
+  margin: 0;
+}
+.blockButton {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--becky-font-label);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+}
+.blockLabel {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 14px;
+}
+.blockNumber {
+  font-family: var(--becky-font-display);
+  font-size: 11px;
+  letter-spacing: 0;
+  color: var(--becky-gold-soft);
+}
+.blockToggle {
+  font-family: var(--becky-font-body);
+  font-size: 18px;
+  letter-spacing: 0;
+  color: var(--becky-gold);
+}
+.blockOpen .blockLabel {
+  position: relative;
+}
+.blockOpen .blockLabel::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 32px;
+  height: 2px;
+  background: var(--becky-gold);
+}
+.blockPanel {
+  padding: 12px 0 22px;
+}
+.blockText {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.8;
+}
+.blockText em {
+  font-family: var(--becky-font-display);
+  font-size: 17px;
+  font-style: italic;
+  color: var(--becky-gold);
+}
+
+/* ---------- Solo con cita previa + sucursales ---------- */
+.appointment {
+  margin-top: 26px;
+  font-size: 16px;
+  font-style: italic;
+}
+.branches {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+.branch {
+  padding: 14px 16px;
+  border: 1px solid var(--becky-line);
+  border-radius: 12px;
+  background: var(--becky-white);
+}
+.branchName {
+  margin: 0;
+  font-family: var(--becky-font-label);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--becky-gold);
+}
+.branchAddress {
+  margin: 6px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.branchLinks {
+  margin: 10px 0 0;
+  display: flex;
+  gap: 18px;
+  font-family: var(--becky-font-label);
+  font-size: 12px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+.branchLinks a {
+  color: var(--becky-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--becky-gold-light);
+  text-underline-offset: 4px;
+}
+.branchLinks a:hover,
+.branchLinks a:focus-visible {
+  color: var(--becky-gold);
+}
+
+@media (max-width: 560px) {
+  .body {
+    padding: 8px 20px 24px;
+  }
+  .blockOpen {
+    margin-inline: -8px;
+    padding-inline: 8px;
+  }
+}

@@ -1,0 +1,37 @@
+/* Behavior that Elementor applied from JavaScript in the WordPress version. */
+.elementor-popup-modal {
+  pointer-events: auto;
+}
+
+.elementor-background-video-container iframe.elementor-background-video-embed {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: none;
+  border: 0;
+  transform: translate(-50%, -50%);
+}
+
+.dialog-widget.elementor-popup-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.elementor-popup-modal .dialog-widget-content {
+  position: relative;
+}
+
+.elementor-popup-modal .dialog-close-button {
+  position: absolute;
+  cursor: pointer;
+}
+
+.elementor-popup-modal .dialog-header {
+  display: none;
+}

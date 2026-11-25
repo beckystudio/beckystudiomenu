@@ -1,0 +1,80 @@
+/*
+ * Tokens de diseño de Becky Studio (colores, tipografía, radios, sombras).
+ * Valores tomados del sitio actual de beckystudio.mx:
+ *   - Negros/blancos: colores globales del kit (#000000, #101010, #FFFFFF, #FBFBFB).
+ *   - Dorados: "¡Bienvenida!" del home (#946C1D), botón Mixología (#806B48),
+ *     cinta de /m/ (#77632D) y botón "Packages" de /m/ (#947B50).
+ *   - Fuentes: Bodoni Moda (títulos en cursiva), Josefin Sans (etiquetas y botones),
+ *     Manrope (texto). Archivos woff2 ya presentes en /public/fonts.
+ * Lo usan las páginas nuevas sin Elementor (por ahora: /m2/).
+ */
+
+@font-face {
+  font-family: "Bodoni Moda";
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("/fonts/bodonimoda-afth7pxzy382xsxx63luyl6gyfcan6njrkp-vpj1koxq.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Bodoni Moda";
+  font-style: italic;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("/fonts/bodonimoda-aftb7pxzy382xsxx63luyjspuqb0pl6oqqxrzlnvbtxsxgm.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Josefin Sans";
+  font-style: normal;
+  font-weight: 100 700;
+  font-display: swap;
+  src: url("/fonts/josefinsans-qw3azqnved7rkgkxtqiqx5eudxx4.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Josefin Sans";
+  font-style: italic;
+  font-weight: 100 700;
+  font-display: swap;
+  src: url("/fonts/josefinsans-qw3ezqnved7rkgkxtqiqx5eucex6xhg.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/fonts/manrope-xn7gyhe41ni1adirggexsg.woff2") format("woff2");
+}
+
+:root {
+  /* Color */
+  --becky-black: #000000;
+  --becky-ink: #101010;
+  --becky-white: #ffffff;
+  --becky-paper: #fbfbfb;
+  --becky-gold: #946c1d;
+  --becky-gold-soft: #806b48;
+  --becky-gold-deep: #77632d;
+  --becky-gold-light: #947b50;
+  --becky-line: rgba(16, 16, 16, 0.12);
+  --becky-glass: rgba(16, 16, 16, 0.38);
+  --becky-glass-border: rgba(255, 255, 255, 0.32);
+
+  /* Tipografía */
+  --becky-font-display: "Bodoni Moda", "Times New Roman", serif;
+  --becky-font-label: "Josefin Sans", "Helvetica Neue", Arial, sans-serif;
+  --becky-font-body: "Manrope", "Helvetica Neue", Arial, sans-serif;
+
+  /* Forma */
+  --becky-radius-panel: 24px;
+  --becky-radius-card: 10px;
+  --becky-radius-dialog: 18px;
+  --becky-radius-pill: 999px;
+  --becky-shadow-panel: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+/* Base mínima para las páginas que usan estos tokens. */
+body {
+  margin: 0;
+  background: var(--becky-black);
+  -webkit-font-smoothing: antialiased;
+}
